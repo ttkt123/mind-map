@@ -675,6 +675,54 @@
 .column-stack .branch-header h2 { font-size: 20px; }
 .column-stack > .branch-card { flex: 1 0 auto; }
 .column-stack > .branch-card > :last-child { margin-bottom: 0; }
+
+/* Nhấn mạnh tiêu đề các mục, giữ nguyên nội dung và bố cục */
+.column-stack .branch-header h2 {
+    font-size: 23px;
+    font-weight: 800;
+    line-height: 1.4;
+    letter-spacing: .25px;
+    text-shadow: 0 1px 0 rgba(255,255,255,.65);
+}
+.column-stack .sub-title {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.5;
+    color: #172033;
+    padding: 9px 12px;
+    margin: -3px -4px 12px;
+    border-bottom: 3px solid currentColor;
+    border-radius: 10px 10px 6px 6px;
+    background: #f1f5f9;
+}
+.theme-green .sub-title { background:#dcfce7; color:#14532d; }
+.theme-blue .sub-title { background:#dbeafe; color:#1e3a8a; }
+.theme-teal .sub-title { background:#ccfbf1; color:#115e59; }
+.theme-amber .sub-title { background:#fef3c7; color:#78350f; }
+.theme-purple .sub-title { background:#ede9fe; color:#4c1d95; }
+.theme-rose .sub-title { background:#ffe4e6; color:#881337; }
+
+
+/* Tiêu đề 4.4.2 đồng bộ các mục nhỏ khác */
+.carbon-pricing-title {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.5;
+    color: #78350f;
+    background: #fef3c7;
+    border-bottom: 3px solid #b45309;
+    border-radius: 10px 10px 6px 6px;
+    padding: 9px 12px;
+    margin-bottom: 12px;
+    text-align: left;
+}
+.carbon-pricing-body, .carbon-pricing-logic {
+    font-size: 14.5px;
+    line-height: 1.55;
+    text-align: left;
+}
+.carbon-pricing-logic { margin-top: 8px; }
+
 </style>
 </head>
 <body>
@@ -992,8 +1040,8 @@
 
                     <!-- 4.4.2 Định giá Carbon & 3 Công cụ -->
                     <div class="formula-banner" style="background:#ffedd5; border-color:#ea580c; color:#7c2d12;">
-                        📌 <strong>4.4.2. Định giá Carbon (Carbon Pricing ):</strong> Là cơ chế gắn giá/chi phí với phát thải khí nhà kính nhằm đưa chi phí xã hội/môi trường vào các quyết định sản xuất, tiêu dùng, đầu tư của doanh nghiệp (Thompson, 2023).<br>
-                        <em>Logic kinh tế: Nếu chi phí giảm phát thải &lt; chi phí carbon phải chịu ➔ Doanh nghiệp có động lực đầu tư công nghệ sạch.</em>
+                        <div class="carbon-pricing-title">📌 4.4.2. Định giá Carbon (Carbon Pricing)</div><div class="carbon-pricing-body">Là cơ chế gắn giá/chi phí với phát thải khí nhà kính nhằm đưa chi phí xã hội/môi trường vào các quyết định sản xuất, tiêu dùng, đầu tư của doanh nghiệp (Thompson, 2023).</div>
+                        <div class="carbon-pricing-logic"><em>Logic kinh tế: Nếu chi phí giảm phát thải &lt; chi phí carbon phải chịu ➔ Doanh nghiệp có động lực đầu tư công nghệ sạch.</em></div>
                     </div>
 
                     <div class="sub-grid-3">
