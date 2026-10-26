@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sơ Đồ Tư Duy Toàn Diện - Chương 4: Các Sản Phẩm & Dịch Vụ Tài Chính Xanh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-paper: #fdfbf7;
+            --grid-line: #e2e8f0;
+            --c-green-dark: #14532d;
+            --c-green-main: #16a34a;
+            --c-green-light: #dcfce7;
+            --c-green-bg: #f0fdf4;
+            --c-blue-dark: #1e3a8a;
+            --c-blue-main: #0284c7;
+            --c-blue-bg: #f0f9ff;
+            --c-teal-dark: #115e59;
+            --c-teal-main: #0d9488;
+            --c-teal-bg: #f0fdfa;
+            --c-amber-dark: #78350f;
+            --c-amber-main: #d97706;
+            --c-amber-bg: #fffbeb;
+            --c-purple-dark: #4c1d95;
+            --c-purple-main: #7c3aed;
+            --c-purple-bg: #f5f3ff;
+            --c-rose-dark: #881337;
+            --c-rose-main: #e11d48;
+            --c-rose-bg: #fff1f2;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Be Vietnam Pro', sans-serif;
+            background-color: var(--bg-paper);
+            background-image: 
+                radial-gradient(#cbd5e1 1px, transparent 1px),
+                radial-gradient(#e2e8f0 1px, var(--bg-paper) 1px);
+            background-size: 28px 28px;
+            background-position: 0 0, 14px 14px;
+            color: #1e293b;
+            line-height: 1.5;
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        /* Thanh công cụ điều khiển phóng to / thu nhỏ */
+         .toolbar {
+         /* Khống chế độ rộng và căn giữa */
+            max-width: 1400px; /* Thay con số này bằng width/max-width của khung mindmap bên dưới */
+            width: 100%;
+            margin: 16px auto; /* 16px khoảng cách trên dưới, auto giúp căn giữa theo chiều ngang */
+            box-sizing: border-box;
+
+         /* Căn chỉnh các phần tử bên trong */
+            display: flex;
+            justify-content: center; /* Căn giữa các nút bấm bên trong toolbar */
+            align-items: center;
+            gap: 10px;
+
+         /* Trang trí giao diện (giữ nguyên phong cách của bạn) */
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid var(--c-green-dark);
+            border-radius: 999px;
+            padding: 8px 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(6px);
+    }
+
+        .toolbar button {
+            background: var(--c-green-main);
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .toolbar button:hover {
+            background: var(--c-green-dark);
+            transform: translateY(-1px);
+        }
+
+        .toolbar span {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--c-green-dark);
+            min-width: 55px;
+            text-align: center;
+        }
+
+        /* Khung Poster Mind Map Khổ Lớn */
+        .mindmap-wrapper {
+            min-width: 2200px;
+            max-width: 2500px;
+            margin: 0 auto;
+            padding: 36px;
+            background: #ffffff;
+            border: 4px solid #166534;
+            border-radius: 32px;
+            box-shadow: 0 20px 50px rgba(20, 83, 45, 0.12);
+            position: relative;
+            transform-origin: top left;
+            transition: transform 0.2s ease;
+        }
+
+        /* Trang trí góc lá cây */
+        .corner-deco {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            pointer-events: none;
+            opacity: 0.85;
+        }
+        .corner-tl { top: 12px; left: 12px; }
+        .corner-tr { top: 12px; right: 12px; transform: scaleX(-1); }
+
+        /* Header Banner giống phong cách Sketchnote mẫu */
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            gap: 24px;
+            padding: 0 20px;
+        }
+
+        .title-badge {
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            border: 3px solid #15803d;
+            border-radius: 24px;
+            padding: 18px 32px;
+            box-shadow: 6px 6px 0px #15803d;
+            max-width: 650px;
+        }
+
+        .title-badge h1 {
+            font-size: 26px;
+            font-weight: 800;
+            color: #14532d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .title-badge .subtitle {
+            margin-top: 6px;
+            display: inline-block;
+            background: #fef08a;
+            border: 2px solid #854d0e;
+            border-radius: 12px;
+            padding: 4px 14px;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 22px;
+            font-weight: 700;
+            color: #713f12;
+        }
+
+        .overview-cloud {
+            flex: 1;
+            background: #f8fafc;
+            border: 2.5px dashed #0284c7;
+            border-radius: 24px;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .overview-cloud .icon-box {
+            width: 64px;
+            height: 64px;
+            background: #e0f2fe;
+            border: 2px solid #0284c7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 32px;
+        }
+
+        .overview-cloud h2 {
+            font-size: 18px;
+            font-weight: 800;
+            color: #0369a1;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .overview-goals {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px 16px;
+            font-size: 13.5px;
+            color: #334155;
+        }
+
+        .overview-goals div::before {
+            content: "✔ ";
+            color: #16a34a;
+            font-weight: bold;
+        }
+
+        /* Bố cục 3 cột lớn: Cột Trái (4.1, 4.2, 4.3) - Trục Giữa (Quả Địa Cầu) - Cột Phải (4.4, 4.5, 4.6) */
+        .mindmap-grid {
+            display: grid;
+            grid-template-columns: 1fr 340px 1fr;
+            gap: 28px;
+            align-items: start;
+        }
+
+        .column-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        /* Cột Trung Tâm (Central Hub) */
+        /* Cột Trung Tâm (Central Hub) - Chạy theo màn hình khi cuộn */
+        .center-spine {
+            position: sticky;
+            top: 10px; /* Khoảng cách cách mép trên màn hình khi dính lại */
+            z-index: 100; /* Đảm bảo khối này luôn nổi lên trên các thành phần khác */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding: 20px 10px;
+            align-self: start; /* Quan trọng: Giúp phần tử con trong lưới grid có thể trượt và dính đúng chiều cao của nó */
+        }
+
+        .earth-hub {
+            background: radial-gradient(circle at 50% 40%, #ffffff 0%, #dcfce7 75%, #bbf7d0 100%);
+            border: 4px solid #15803d;
+            border-radius: 36px;
+            padding: 28px 20px;
+            text-align: center;
+            box-shadow: 0 12px 0 #15803d, 0 20px 30px rgba(0,0,0,0.1);
+            width: 100%;
+            position: relative;
+        }
+
+        .earth-hub h2 {
+            font-size: 25px;
+            font-weight: 800;
+            color: #14532d;
+            line-height: 1.25;
+            text-transform: uppercase;
+            margin: 12px 0 8px;
+        }
+
+        .earth-hub .tag-ribbon {
+            background: #facc15;
+            border: 2px solid #854d0e;
+            color: #713f12;
+            font-weight: 800;
+            padding: 6px 16px;
+            border-radius: 999px;
+            display: inline-block;
+            font-size: 15px;
+            box-shadow: 2px 3px 0 #854d0e;
+        }
+
+        /* Các chỉ dấu nhánh nối từ Trung Tâm sang 6 Mục */
+        .branch-directory {
+            width: 100%;
+            background: #ffffff;
+            border: 2.5px solid #cbd5e1;
+            border-radius: 24px;
+            padding: 18px;
+            box-shadow: 4px 4px 0 #cbd5e1;
+        }
+
+        .branch-directory h3 {
+            text-align: center;
+            font-size: 16px;
+            font-weight: 800;
+            color: #334155;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            border-bottom: 2px dashed #e2e8f0;
+            padding-bottom: 8px;
+        }
+
+        .dir-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 9px 12px;
+            margin-bottom: 8px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 14px;
+            border: 2px solid currentColor;
+        }
+
+        .dir-left { flex-direction: row; }
+        .dir-right { flex-direction: row-reverse; }
+
+        /* Quy trình Tín chỉ Carbon (Mini Infographic ở trục giữa) */
+        .carbon-lifecycle-box {
+            width: 100%;
+            background: #fffbeb;
+            border: 3px solid #d97706;
+            border-radius: 24px;
+            padding: 18px;
+            box-shadow: 5px 5px 0 #d97706;
+        }
+
+        .carbon-lifecycle-box h3 {
+            font-size: 15px;
+            font-weight: 800;
+            color: #92400e;
+            text-align: center;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .step-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .step-pill {
+            background: #ffffff;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 8px 12px;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #78350f;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .step-num {
+            background: #d97706;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .step-arrow {
+            text-align: center;
+            color: #d97706;
+            font-weight: 800;
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        /* Style chung cho 6 Nhánh Chính (Section Cards) */
+        .branch-card {
+            border-radius: 24px;
+            padding: 24px;
+            position: relative;
+            background: #ffffff;
+            border-width: 3px;
+            border-style: solid;
+        }
+
+        .branch-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            border: 2.5px solid currentColor;
+        }
+
+        .branch-header h2 {
+            font-size: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .branch-header .slide-ref {
+            font-size: 12.5px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.85);
+            border: 1.5px solid currentColor;
+        }
+
+        /* Màu sắc riêng cho 6 nhánh */
+        .theme-green {
+            border-color: var(--c-green-main);
+            background-color: var(--c-green-bg);
+            box-shadow: 7px 7px 0px var(--c-green-main);
+        }
+        .theme-green .branch-header {
+            background: #bbf7d0;
+            color: var(--c-green-dark);
+        }
+
+        .theme-blue {
+            border-color: var(--c-blue-main);
+            background-color: var(--c-blue-bg);
+            box-shadow: 7px 7px 0px var(--c-blue-main);
+        }
+        .theme-blue .branch-header {
+            background: #bae6fd;
+            color: var(--c-blue-dark);
+        }
+
+        .theme-teal {
+            border-color: var(--c-teal-main);
+            background-color: var(--c-teal-bg);
+            box-shadow: 7px 7px 0px var(--c-teal-main);
+        }
+        .theme-teal .branch-header {
+            background: #99f6e4;
+            color: var(--c-teal-dark);
+        }
+
+        .theme-amber {
+            border-color: var(--c-amber-main);
+            background-color: var(--c-amber-bg);
+            box-shadow: 7px 7px 0px var(--c-amber-main);
+        }
+        .theme-amber .branch-header {
+            background: #fde68a;
+            color: var(--c-amber-dark);
+        }
+
+        .theme-purple {
+            border-color: var(--c-purple-main);
+            background-color: var(--c-purple-bg);
+            box-shadow: 7px 7px 0px var(--c-purple-main);
+        }
+        .theme-purple .branch-header {
+            background: #ddd6fe;
+            color: var(--c-purple-dark);
+        }
+
+        .theme-rose {
+            border-color: var(--c-rose-main);
+            background-color: var(--c-rose-bg);
+            box-shadow: 7px 7px 0px var(--c-rose-main);
+        }
+        .theme-rose .branch-header {
+            background: #fecdd3;
+            color: var(--c-rose-dark);
+        }
+
+        /* Các khối nội dung con (Sub-nodes) */
+        .sub-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .sub-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .sub-box {
+            background: #ffffff;
+            border: 2px solid #cbd5e1;
+            border-radius: 16px;
+            padding: 14px 16px;
+            margin-bottom: 16px;
+        }
+
+        .sub-grid-2 .sub-box, .sub-grid-3 .sub-box {
+            margin-bottom: 0;
+        }
+
+        .sub-title {
+            font-size: 15.5px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 2px dashed #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #0f172a;
+        }
+
+        .sub-title .badge {
+            font-size: 12px;
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: #e2e8f0;
+            color: #334155;
+            font-weight: 700;
+        }
+
+        ul.node-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul.node-list li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 7px;
+            font-size: 14px;
+            color: #1e293b;
+        }
+
+        ul.node-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        ul.node-list li::before {
+            content: "•";
+            position: absolute;
+            left: 3px;
+            top: 0;
+            font-weight: 900;
+            color: #16a34a;
+            font-size: 16px;
+        }
+
+        .theme-blue ul.node-list li::before { color: var(--c-blue-main); }
+        .theme-teal ul.node-list li::before { color: var(--c-teal-main); }
+        .theme-amber ul.node-list li::before { color: var(--c-amber-main); }
+        .theme-purple ul.node-list li::before { color: var(--c-purple-main); }
+        .theme-rose ul.node-list li::before { color: var(--c-rose-main); }
+
+        /* Công thức / Highlight Callout */
+        .formula-banner {
+            background: #fef9c3;
+            border: 2px solid #ca8a04;
+            border-radius: 12px;
+            padding: 10px 16px;
+            font-weight: 700;
+            color: #713f12;
+            font-size: 14.5px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        /* Bảng dữ liệu trong Mindmap */
+        .mm-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin-top: 8px;
+            background: #ffffff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .mm-table th, .mm-table td {
+            border: 1.5px solid #cbd5e1;
+            padding: 7px 10px;
+            text-align: left;
+        }
+
+        .mm-table th {
+            background: #f1f5f9;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .mm-table td.num, .mm-table th.num {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .mm-table tr.total-row {
+            background: #f0fdf4;
+            font-weight: 800;
+        }
+
+        /* Phổ 5 Chiến lược đầu tư (Mục 4.3) */
+        .spectrum-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .spectrum-item {
+            border-radius: 12px;
+            padding: 11px 14px;
+            border-left: 8px solid;
+            background: #ffffff;
+            border-top: 1.5px solid #e2e8f0;
+            border-right: 1.5px solid #e2e8f0;
+            border-bottom: 1.5px solid #e2e8f0;
+            font-size: 13.8px;
+        }
+
+        .sp-1 { border-left-color: #bbf7d0; background: #f8fafc; }
+        .sp-2 { border-left-color: #4ade80; }
+        .sp-3 { border-left-color: #16a34a; }
+        .sp-4 { border-left-color: #15803d; background: #f0fdf4; }
+        .sp-5 { border-left-color: #052e16; background: #ecfdf5; }
+
+        .spectrum-item .sp-head {
+            font-weight: 800;
+            font-size: 14.5px;
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Thẻ thống kê số liệu (Stat Pills) */
+        .stat-strip {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 8px 0 10px;
+        }
+
+        .stat-badge {
+            flex: 1;
+            min-width: 110px;
+            background: #f8fafc;
+            border: 1.5px solid #94a3b8;
+            border-radius: 10px;
+            padding: 6px 10px;
+            text-align: center;
+        }
+
+        .stat-badge .val {
+            display: block;
+            font-size: 15px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .stat-badge .lbl {
+            font-size: 11.5px;
+            color: #475569;
+            font-weight: 600;
+        }
+
+        @media print {
+            .toolbar { display: none; }
+            body { padding: 0; background: white; }
+            .mindmap-wrapper { box-shadow: none; border-width: 2px; }
+        }
+    
+.mindmap-grid { grid-template-columns: minmax(0, 1fr) 300px minmax(0, 1fr); align-items: stretch; }
+.column-stack { min-width: 0; }
+.wide-row { display: block; margin-bottom: 16px; }
+.wide-row > .sub-box { width: 100%; margin-bottom: 0; }
+.column-stack .node-list li, .column-stack .spectrum-item,
+.column-stack .sub-box > p { font-size: 14px !important; line-height: 1.55; }
+.column-stack .sub-title { font-size: 15.5px; }
+.column-stack .branch-header h2 { font-size: 20px; }
+.column-stack > .branch-card { flex: 1 0 auto; }
+.column-stack > .branch-card > :last-child { margin-bottom: 0; }
+</style>
+</head>
+<body>
+
+    <!-- Thanh điều khiển thu phóng -->
+    <div class="toolbar">
+        <button onclick="zoomMap(-0.1)">➖ Thu nhỏ</button>
+        <span id="zoom-val">70%</span>
+        <button onclick="zoomMap(0.1)">➕ Phóng to</button>
+        <button onclick="resetZoom()" style="background:#0284c7;">🔄 Mặc định</button>
+        <button onclick="window.print()" style="background:#475569;">🖨️ In / Lưu PDF</button>
+    </div>
+
+    <div class="mindmap-wrapper" id="mindmap-canvas">
+        
+        <!-- Header Poster -->
+        
+
+        <!-- Lưới Sơ Đồ Tư Duy 3 Cột -->
+        <div class="mindmap-grid">
+
+            <!-- ==================== CỘT TRÁI: NHÁNH 4.1, 4.2, 4.3 ==================== -->
+            <div class="column-stack">
+
+                <!-- NHÁNH 4.1: NGÂN HÀNG XANH & TÍN DỤNG XANH -->
+                <section class="branch-card theme-green">
+                    <div class="branch-header">
+                        <h2>🏦 4.1. NGÂN HÀNG XANH VÀ TÍN DỤNG XANH</h2>
+                    </div>
+
+                    <!-- 4.1.1 Khái niệm Ngân hàng xanh -->
+                    <div class="sub-box">
+                        <div class="sub-title">🌱 4.1.1. Ba Định Nghĩa Chuẩn Về Ngân Hàng Xanh <span class="badge"></span></div>
+                        <ul class="node-list">
+                            <li><strong>U.S. EPA (2018) – Ngân hàng xanh:</strong> Là định chế tài chính công, bán công hoặc phi lợi nhuận hoạt động theo một sứ mệnh môi trường cụ thể, sử dụng nguồn vốn và các công cụ tài chính để thúc đẩy triển khai năng lượng sạch, giảm phát thải, huy động thêm vốn tư nhân và lấp đầy những khoảng trống tài chính của thị trường đối với các dự án xanh.</li>
+                            <li><strong>OECD (2016) – Ngân hàng đầu tư xanh:</strong> Là một tổ chức được vốn hóa bằng nguồn vốn công, được thành lập chuyên biệt nhằm thúc đẩy đầu tư tư nhân vào cơ sở hạ tầng carbon thấp, có khả năng chống chịu khí hậu và các lĩnh vực xanh khác như quản lý nước và chất thải.</li>
+                            <li><strong>Simon Thompson (2023) – Ngân hàng phát triển xanh:</strong> Là tổ chức tài chính do Nhà nước thành lập, cấp vốn hoặc hỗ trợ, nhằm thúc đẩy sự phát triển bền vững về môi trường và có khả năng chống chịu với biến đổi khí hậu (BĐKH).</li>
+                        </ul>
+                    </div>
+
+                    <!-- Hai trụ cột của Ngân hàng xanh -->
+                    <div class="sub-grid-2">
+                        <div class="sub-box" style="border-color:#16a34a;">
+                            <div class="sub-title">⚙️ Trụ cột 1: Xanh hóa tài chính (Greening Finance)</div>
+                            <ul class="node-list">
+                                <li>Lồng ghép yếu tố môi trường & bền vững vào chiến lược, hoạt động và quy trình vận hành nội bộ.</li>
+                                <li>Tích hợp rủi ro môi trường, khí hậu và bền vững vào hệ thống quản trị rủi ro.</li>
+                                <li>Đặt mục tiêu giảm phát thải carbon (financed emissions) trong danh mục cho vay và đầu tư.</li>
+                                <li>Phát triển các sản phẩm, dịch vụ mới có tác động tích cực.</li>
+                            </ul>
+                        </div>
+                        <div class="sub-box" style="border-color:#16a34a;">
+                            <div class="sub-title">💸 Trụ cột 2: Tài trợ xanh (Financing Green)</div>
+                            <ul class="node-list">
+                                <li>Chủ động gia tăng dòng vốn tài trợ cho các hoạt động xanh của khách hàng.</li>
+                                <li>Tài trợ năng lượng tái tạo (như cho vay 500 tỷ xây điện mặt trời), công trình xanh, giao thông sạch, kinh tế tuần hoàn & thích ứng BĐKH.</li>
+                                <li>Hỗ trợ doanh nghiệp chuyển đổi từ phát thải cao sang phát thải thấp.</li>
+                                <li>Bảo lãnh phát hành trái phiếu xanh, bền vững và chuyển đổi.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 4.1.2 Các sản phẩm của Ngân hàng xanh -->
+                    <div class="sub-grid-2">
+                        <div class="sub-box">
+                            <div class="sub-title">💳 4.1.2. Sản phẩm Ngân hàng Bán lẻ <span class="badge"></span></div>
+                            <ul class="node-list">
+                                <li>Tài khoản và tiền gửi xanh (Green deposits).</li>
+                                <li>Thẻ thanh toán hoặc ứng dụng khuyến khích tiêu dùng bền vững.</li>
+                                <li>Vay mua phương tiện phát thải thấp (xe điện, xe hybrid).</li>
+                                <li>Khoản vay thế chấp xanh (Green mortgages).</li>
+                                <li>Khoản vay cải tạo nhà ở tiết kiệm năng lượng.</li>
+                            </ul>
+                        </div>
+                        <div class="sub-box">
+                            <div class="sub-title">🏢 4.1.2. Sản phẩm Ngân hàng Doanh nghiệp <span class="badge"></span></div>
+                            <ul class="node-list">
+                                <li>Khoản vay xanh (Green loans).</li>
+                                <li>Khoản vay liên kết bền vững (Sustainability-linked loans).</li>
+                                <li>Tài trợ thương mại xanh (Green trade finance).</li>
+                                <li>Tài trợ chuỗi cung ứng bền vững.</li>
+                                <li>Bảo lãnh và tư vấn chuyển đổi xanh.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 4.1.3 Tín dụng xanh -->
+                    <div class="formula-banner">
+                        📌<strong> Khái niệm Tín dụng xanh: </strong> Hoạt động cấp tín dụng cho các dự án, tài sản và hoạt động xanh, đồng thời tích hợp rủi ro MT-XH vào xem xét & quản lý khoản vay.<br>
+                        <strong>TÍN DỤNG XANH = PHÂN BỔ VỐN XANH + QUẢN TRỊ RỦI RO MÔI TRƯỜNG & XÃ HỘI</strong>
+                    </div>
+
+                    <div class="sub-grid-2">
+                        <div class="sub-box">
+                            <div class="sub-title">🎯 2 Trụ cột của Tín dụng xanh <span class="badge"></span></div>
+                            <ul class="node-list">
+                                <li><strong>Phân bổ vốn xanh:</strong> Trả lời câu hỏi <em>"Nguồn vốn tín dụng được cung cấp cho dự án/hoạt động nào?"</em>; Đối chiếu với taxonomy xanh, danh mục dự án xanh hoặc tiêu chí kỹ thuật; Xác định mục tiêu môi trường & đóng góp đáng kể.</li>
+                                <li><strong>QTRR Môi trường – Xã hội:</strong> Trả lời câu hỏi <em>"Các yếu tố MT-XH được xem xét thế nào trong quyết định tín dụng?"</em>; Nhận diện tác động bất lợi có thể phát sinh; Đưa kết quả đánh giá vào điều kiện tín dụng, điều khoản cam kết (covenant) và giám sát.</li>
+                            </ul>
+                        </div>
+                        <div class="sub-box">
+                            <div class="sub-title">⚖️ Phân biệt Tín dụng xanh & Khoản vay xanh </div>
+                            <ul class="node-list">
+                                <li><strong>Tín dụng xanh (Rộng hơn):</strong> Phản ánh định hướng và hoạt động cấp tín dụng cho các dự án, tài sản và hoạt động xanh. Ngoài khoản vay xanh còn bao gồm: thế chấp xanh, cho thuê tài chính xanh, tài trợ thương mại xanh và các hình thức cấp tín dụng khác.</li>
+                                <li><strong>Khoản vay xanh (Hẹp hơn):</strong> Là một sản phẩm hoặc cấu trúc cho vay cụ thể mà nguồn vốn được sử dụng cho các dự án xanh đủ điều kiện. Là một hình thức triển khai tín dụng xanh.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </section>
+                <!-- NHÁNH 4.2: TRÁI PHIẾU XANH & TRÁI PHIẾU BỀN VỮNG -->
+                <section class="branch-card theme-blue">
+                    <div class="branch-header">
+                        <h2>📜 4.2. TRÁI PHIẾU XANH VÀ TRÁI PHIẾU BỀN VỮNG</h2>
+                    </div>
+
+                    <div class="sub-grid-2">
+                        <div class="sub-box">
+                            <div class="sub-title">🌿 4.2.1. Trái Phiếu Xanh (Green Bond) </div>
+                            <ul class="node-list">
+                                <li><strong>Khái niệm:</strong> Là một công cụ nợ được phát hành nhằm huy động nguồn vốn để tài trợ hoặc tái tài trợ cho những <strong>dự án xanh đủ điều kiện</strong>, theo khuôn khổ và tiêu chí áp dụng.</li>
+                                <li><strong>Phân loại 4 nhóm Trái phiếu xanh:</strong>
+                                    <br>1. <em>TPX tiêu chuẩn dựa trên mục đích sử dụng vốn:</em> Nghĩa vụ nợ không có bảo đảm, quyền truy đòi đầy đủ đối với tổ chức phát hành (TCPH).
+                                    <br>2. <em>Trái phiếu doanh thu xanh:</em> Rủi ro tín dụng gắn với dòng tiền doanh thu, phí, thuế được cam kết.
+                                    <br>3. <em>Trái phiếu dự án xanh:</em> Nhà đầu tư trực tiếp chịu rủi ro của dự án.
+                                    <br>4. <em>Trái phiếu xanh có bảo đảm:</em> Nguồn vốn dùng cho dự án xanh có liên hệ với tài sản bảo đảm hoặc dự án xanh của TCPH/bên tài trợ.
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="sub-box">
+                            <div class="sub-title">🤝 4.2.2. Trái Phiếu Bền Vững (Sustainability Bond) </div>
+                            <ul class="node-list">
+                                <li><strong>Khái niệm:</strong> Là trái phiếu mà toàn bộ số tiền thu được từ phát hành (hoặc một khoản tiền tương đương) được sử dụng riêng để tài trợ hoặc tái tài trợ cho <strong>sự kết hợp giữa các dự án xanh và dự án xã hội</strong>.</li>
+                                <li><strong>Phân loại 4 nhóm Trái phiếu bền vững:</strong>
+                                    <br>1. <em>Trái phiếu bền vững tiêu chuẩn dựa trên mục đích sử dụng.</em>
+                                    <br>2. <em>Trái phiếu doanh thu bền vững.</em>
+                                    <br>3. <em>Trái phiếu dự án xanh.</em>
+                                    <br>4. <em>Trái phiếu có bảo đảm.</em>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- NHÁNH 4.3: ĐẦU TƯ CÓ TRÁCH NHIỆM VÀ ĐẦU TƯ BỀN VỮNG -->
+                <section class="branch-card theme-teal">
+                    <div class="branch-header">
+                        <h2>📈 4.3. ĐẦU TƯ CÓ TRÁCH NHIỆM VÀ ĐẦU TƯ BỀN VỮNG</h2>
+                    </div>
+
+                    <div class="sub-grid-2">
+                        <div class="sub-box">
+                            <div class="sub-title">🔍 4.3.1. Khái niệm Đầu tư có trách nhiệm </div>
+                            <ul class="node-list">
+                                <li>Là cách tiếp cận trong đó nhà đầu tư đưa các yếu tố <strong>Môi trường, Xã hội và Quản trị (ESG)</strong> vào quá trình phân tích và ra quyết định đầu tư.</li>
+                                <li>Được tích hợp <strong>xuyên suốt quá trình đầu tư</strong>: từ xây dựng quan điểm đầu tư ➔ phân tích & ra quyết định ➔ thực hiện quyền sở hữu ➔ quản lý và báo cáo.</li>
+                            </ul>
+                        </div>
+                        <div class="sub-box">
+                            <div class="sub-title">🌟 4.3.1. Khái niệm Đầu tư bền vững </div>
+                            <ul class="node-list">
+                                <li>Là khoản đầu tư vào một hoạt động kinh tế đóng góp cho <strong>mục tiêu môi trường hoặc mục tiêu xã hội</strong>.</li>
+                                <li><strong>Điều kiện bắt buộc:</strong> Khoản đầu tư đó <em>không gây tổn hại đáng kể (DNSH)</em> đến bất kỳ mục tiêu môi trường hoặc xã hội nào và doanh nghiệp nhận đầu tư phải thực hiện các <em>thông lệ quản trị tốt</em>.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 4.3.2 Phổ 5 chiến lược đầu tư -->
+                    <div class="sub-box">
+                        <div class="sub-title">🎨 4.3.2. Phổ Chiến Lược Đầu Tư: Từ "Xanh Rất Nhạt" Đến "Xanh/Xạm Rất Đậm" </div>
+                        <p style="font-size:13px; color:#475569; margin-bottom:10px;"><em>Ý nghĩa: Không phải mọi quỹ ESG đều có cùng mức độ bền vững. Cần phân biệt giữa "tránh tác động tiêu cực" với "chủ động tạo tác động tích cực".</em></p>
+                        
+                        <div class="spectrum-stack">
+                            <div class="spectrum-item sp-1">
+                                <div class="sp-head"><span>1. Xanh rất nhạt – Chiến lược Sàng lọc loại trừ (Negative/Exclusionary Screening)</span></div>
+                                • <strong>Nội dung:</strong> Loại bỏ khỏi danh mục những tài sản, doanh nghiệp hoặc ngành không đáp ứng tiêu chí xác định trước (VD: loại bỏ DN có doanh thu vượt ngưỡng từ than nhiệt, thuốc lá hoặc hoạt động gây tranh cãi).<br>
+                                • <strong>Ưu điểm:</strong> Dễ áp dụng, giúp danh mục phù hợp với giá trị/chính sách của NĐT. | <strong>Hạn chế:</strong> Chỉ loại bỏ ngành không nhất thiết tạo ra tác động bổ sung cho PTBV.
+                            </div>
+
+                            <div class="spectrum-item sp-2">
+                                <div class="sp-head"><span>2. Xanh nhạt – Chiến lược Sàng lọc tích cực (Positive/Best-in-class Screening)</span></div>
+                                • <strong>Nội dung:</strong> Đưa vào danh mục những tài sản, DN hoặc ngành đáp ứng các tiêu chí xác định trước. Nhà đầu tư không nhất thiết loại bỏ toàn bộ một ngành mà ưu tiên lựa chọn những doanh nghiệp có <strong>hiệu quả ESG tốt hơn</strong> so với các doanh nghiệp cùng ngành.
+                            </div>
+
+                            <div class="spectrum-item sp-3">
+                                <div class="sp-head"><span>3. Xanh – Chiến lược Đầu tư tích hợp ESG (ESG Integration)</span></div>
+                                • <strong>Nội dung:</strong> ESG không chỉ là bộ lọc mà trở thành một phần của phân tích giá trị doanh nghiệp và quyết định đầu tư. Mục tiêu là xác định yếu tố ESG nào <strong>trọng yếu</strong> và ảnh hưởng đến dòng tiền, chi phí vốn, rủi ro hoặc giá trị DN.<br>
+                                • <strong>3 trụ cột:</strong> <em>Môi trường</em> (Phát thải GHG, năng lượng, nước, chất thải, đa dạng sinh học, rủi ro khí hậu); <em>Xã hội</em> (Lao động, sức khỏe & an toàn, nhân quyền, chuỗi cung ứng, cộng đồng); <em>Quản trị</em> (HĐQT, kiểm soát nội bộ, thù lao, đạo đức kinh doanh, quyền cổ đông).
+                            </div>
+
+                            <div class="spectrum-item sp-4">
+                                <div class="sp-head"><span>4. Xanh đậm – Chiến lược Đầu tư tác động (Impact Investing) </span></div>
+                                • <strong>Nội dung:</strong> Cách tiếp cận có chủ đích tạo ra tác động môi trường và xã hội nhằm đạt mục tiêu cụ thể có thể đo lường, bên cạnh lợi nhuận tài chính.<br>
+                                • <strong>Ba câu hỏi cốt lõi:</strong> (1) NĐT có chủ đích tạo tác động ngay từ đầu không? (2) Tác động có được đo lường bằng KPI cụ thể không? (3) Khoản đầu tư có đồng thời theo đuổi lợi nhuận tài chính không?
+                            </div>
+
+                            <div class="spectrum-item sp-5">
+                                <div class="sp-head"><span>5. Xanh/Xạm rất đậm – Hoạt động cổ đông tích cực & Trách nhiệm quản lý (Active Ownership) </span></div>
+                                • <strong>Nội dung:</strong> Nhà đầu tư không chỉ lựa chọn doanh nghiệp mà còn <strong>sử dụng quyền sở hữu (quyền cổ đông) để thúc đẩy thay đổi</strong>.<br>
+                                • <strong>Công cụ:</strong> Đối thoại với ban lãnh đạo, bỏ phiếu tại ĐHĐCĐ, đề xuất nghị quyết cổ đông hoặc gây áp lực về chiến lược khí hậu.<br>
+                                • <strong>Ví dụ:</strong> Yêu cầu mục tiêu phát thải ròng bằng 0 (Net Zero), công bố phát thải Scope 1–3, xây dựng kế hoạch chuyển đổi đáng tin cậy.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4.3.3 Động lực & 4.3.4 Tẩy xanh -->
+                    <div class="wide-row">
+                        <div class="sub-box">
+                            <div class="sub-title">🚀 4.3.3. Ba Động lực thúc đẩy & 4.3.4. Tẩy xanh </div>
+                            <ul class="node-list">
+                                <li><strong>Động lực 1 – Rủi ro:</strong> Các vấn đề MT-XH có thể chuyển hóa thành rủi ro tài chính đối với DN và NĐT.</li>
+                                <li><strong>Động lực 2 – Chính sách & Quy định:</strong> Công bố thông tin, taxonomy, định giá carbon và tiêu chuẩn phát thải làm thay đổi giá trị kinh tế của tài sản.</li>
+                                <li><strong>Động lực 3 – Lợi nhuận:</strong> DN quản lý ESG tốt giúp giảm rủi ro, sử dụng tài nguyên hiệu quả, thích ứng tốt hơn với chính sách và khai thác cơ hội chuyển đổi xanh.</li>
+                                <li><strong>Tẩy xanh (Greenwashing):</strong> Hành vi tổ chức đưa ra các tuyên bố sai lệch về tính bền vững (cả bắt buộc lẫn quảng cáo tự nguyện) gây hiểu lầm cho NĐT trong quyết định của họ.</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- ==================== CỘT GIỮA: TRỤC TRUNG TÂM & QUY TRÌNH ==================== -->
+            <div class="center-spine">
+                
+                <div class="earth-hub">
+                    <svg width="150" height="150" viewBox="0 0 200 200" role="img">
+                        <title>Biểu tượng Trái đất Tài chính Xanh</title>
+                        <circle cx="100" cy="105" r="68" fill="#38bdf8" stroke="#14532d" stroke-width="5"/>
+                        <path d="M60 75 Q85 60 110 80 T150 95 Q140 130 110 145 Q75 135 55 110 Z" fill="#4ade80" stroke="#14532d" stroke-width="4"/>
+                        <path d="M120 50 Q135 65 155 60 Q145 42 120 50 Z" fill="#22c55e" stroke="#14532d" stroke-width="3"/>
+                        <!-- Cây xanh mọc trên đỉnh trái đất -->
+                        <path d="M100 37 L100 12" stroke="#14532d" stroke-width="5" stroke-linecap="round"/>
+                        <path d="M100 25 Q122 10 128 28 Q112 38 100 25 Z" fill="#16a34a" stroke="#14532d" stroke-width="3"/>
+                        <path d="M100 30 Q78 15 72 32 Q88 42 100 30 Z" fill="#22c55e" stroke="#14532d" stroke-width="3"/>
+                        <!-- Bàn tay nâng đỡ -->
+                        <path d="M25 130 Q50 175 95 175" fill="none" stroke="#ca8a04" stroke-width="6" stroke-linecap="round"/>
+                        <path d="M175 130 Q150 175 105 175" fill="none" stroke="#ca8a04" stroke-width="6" stroke-linecap="round"/>
+                    </svg>
+                    <h2>CHƯƠNG 4:<br>CÁC SẢN PHẨM & DỊCH VỤ TÀI CHÍNH XANH</h2>
+                    <div class="tag-ribbon">Tài chính xanh vì Hành tinh xanh</div>
+                </div>
+                <!-- Sơ đồ điều hướng 6 nhánh -->
+                <div class="branch-directory">
+                    <h3>🧭 Cấu Trúc 6 Nhánh Chính</h3>
+                    <div class="dir-item dir-left" style="color:#15803d; background:#f0fdf4;">
+                        <span>⬅ 4.1. Ngân hàng & Tín dụng xanh</span>                       
+                    </div>
+                    <div class="dir-item dir-left" style="color:#0369a1; background:#f0f9ff;">
+                        <span>⬅ 4.2. Trái phiếu xanh & Bền vững</span>
+                    </div>
+                    <div class="dir-item dir-left" style="color:#0f766e; background:#f0fdfa;">
+                        <span>⬅ 4.3. Đầu tư có TN & Bền vững</span>
+                    </div>
+                    <div class="dir-item dir-right" style="color:#b45309; background:#fffbeb;">
+                        <span>4.4. Tín chỉ & Thị trường Carbon ➡</span>
+                    </div>
+                    <div class="dir-item dir-right" style="color:#6d28d9; background:#f5f3ff;">
+                        <span>4.5. Công nghệ TC Xanh (FinTech) ➡</span>
+                    </div>
+                    <div class="dir-item dir-right" style="color:#be123c; background:#fff1f2;">
+                        <span>4.6. Bảo hiểm tác động & Bền vững ➡</span>
+                    </div>
+                </div>
+
+                <!-- Sơ đồ quy trình hình thành tín chỉ Carbon  -->
+                <div class="carbon-lifecycle-box">
+                    <h3>🔄 Quy Trình Hình Thành & Vòng Đời Tín Chỉ Carbon </h3>
+                    <div class="step-flow">
+                        <div class="step-pill"><span class="step-num">1</span> Dự án giảm / loại bỏ phát thải</div>
+                        <div class="step-arrow">⬇</div>
+                        <div class="step-pill"><span class="step-num">2</span> Thiết lập Đường cơ sở (Baseline)</div>
+                        <div class="step-arrow">⬇</div>
+                        <div class="step-pill"><span class="step-num">3</span> Đo lường & Báo cáo kết quả</div>
+                        <div class="step-arrow">⬇</div>
+                        <div class="step-pill"><span class="step-num">4</span> Xác minh độc lập (MRV / Chứng nhận)</div>
+                        <div class="step-arrow">⬇</div>
+                        <div class="step-pill"><span class="step-num">5</span> Phát hành tín chỉ & Đăng ký</div>
+                        <div class="step-arrow">⬇</div>
+                        <div class="step-pill"><span class="step-num">6</span> Giao dịch / Bù trừ / Thu hồi (Retire)</div>
+                    </div>
+                </div>
+
+                <!-- Tóm tắt phân biệt Bảo hiểm truyền thống vs Tác động vs Bền vững -->
+
+            </div>
+
+            <!-- ==================== CỘT PHẢI: NHÁNH 4.4, 4.5, 4.6 ==================== -->
+            <div class="column-stack">
+
+                <!-- NHÁNH 4.4: TÍN CHỈ CARBON VÀ THỊ TRƯỜNG CARBON -->
+                <section class="branch-card theme-amber">
+                    <div class="branch-header">
+                        <h2>♻️ 4.4. TÍN CHỈ CARBON VÀ THỊ TRƯỜNG CARBON</h2>
+                    </div>
+
+                    <!-- 4.4.1 Khái niệm, Bản chất kép & 3 Đặc điểm -->
+                    <div class="sub-box">
+                        <div class="sub-title">💨 4.4.1. Khái niệm, Bản chất kép & 3 Đặc điểm của Tín chỉ Carbon </div>
+                        <ul class="node-list">
+                            <li><strong>Định nghĩa chung ( & ICVCM 2024):</strong> Tín chỉ carbon (Carbon Credit) là đơn vị đại diện cho một lượng khí nhà kính được giảm hoặc loại bỏ, đã được xác minh và cấp tín chỉ theo một cơ chế hoặc tiêu chuẩn nhất định. Quy ước: <strong>1 tín chỉ = 1 tấn CO₂ tương đương (tCO₂e)</strong>.</li>
+                            <li><strong>Định nghĩa của World Bank (2025):</strong> Là chứng nhận đại diện cho việc giảm nhẹ hoặc loại bỏ 1 tấn CO₂e khỏi khí quyển. <em>Lưu ý quan trọng:</em> Một kết quả giảm phát thải không tự động trở thành tín chỉ carbon; kết quả đó phải trải qua một quy trình cụ thể để được chuyển thành một tài sản gọi là tín chỉ carbon.</li>
+                            <li><strong>Bản chất kép (2 thuộc tính):</strong>
+                                <br>✔ <em>Về môi trường:</em> Đại diện cho một kết quả giảm hoặc loại bỏ khí nhà kính đã được lượng hóa theo cơ chế nhất định.
+                                <br>✔ <em>Về kinh tế:</em> Tạo khả năng định giá và chuyển giao giá trị của kết quả giảm nhẹ, qua đó kết nối hoạt động giảm phát thải với dòng vốn khí hậu (tạo cơ sở cho sự hình thành thị trường tín chỉ carbon).
+                            </li>
+                            <li><strong>3 Đặc điểm bắt buộc của Tín chỉ carbon:</strong>
+                                <br>1. Phải gắn với một kết quả giảm, tránh hoặc loại bỏ phát thải khí nhà kính được xác định.
+                                <br>2. Kết quả này phải được lượng hóa theo đơn vị CO₂e và trải qua quá trình đo lường, báo cáo, xác minh (MRV) hoặc chứng nhận theo cơ chế phù hợp.
+                                <br>3. Sau khi đáp ứng các yêu cầu của chương trình tín chỉ, kết quả giảm nhẹ mới được phát hành thành một đơn vị có thể được đăng ký, theo dõi, chuyển giao, giao dịch hoặc thu hồi.
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- 4.4.2 Định giá Carbon & 3 Công cụ -->
+                    <div class="formula-banner" style="background:#ffedd5; border-color:#ea580c; color:#7c2d12;">
+                        📌 <strong>4.4.2. Định giá Carbon (Carbon Pricing ):</strong> Là cơ chế gắn giá/chi phí với phát thải khí nhà kính nhằm đưa chi phí xã hội/môi trường vào các quyết định sản xuất, tiêu dùng, đầu tư của doanh nghiệp (Thompson, 2023).<br>
+                        <em>Logic kinh tế: Nếu chi phí giảm phát thải &lt; chi phí carbon phải chịu ➔ Doanh nghiệp có động lực đầu tư công nghệ sạch.</em>
+                    </div>
+
+                    <div class="sub-grid-3">
+                        <div class="sub-box">
+                            <div class="sub-title">1️⃣ 4.4.3. Thuế Carbon </div>
+                            <ul class="node-list">
+                                <li>Nhà nước ấn định mức thuế đối với phát thải KNK hoặc hàm lượng carbon của nhiên liệu.</li>
+                                <li><strong>Đặc trưng:</strong> Nhà nước xác định giá carbon; DN quyết định mức giảm phát thải dựa trên mức giá đó.</li>
+                                <li><strong>Ví dụ:</strong> Thuế 30 USD/tCO₂e. DN phát thải 10.000 tCO₂e ➔ nộp 300.000 USD. Nếu giảm 2.000 tCO₂e ➔ tiết kiệm 60.000 USD.</li>
+                            </ul>
+                        </div>
+                        <div class="sub-box">
+                            <div class="sub-title">2️⃣ 4.4.4. Hệ thống ETS </div>
+                            <ul class="node-list">
+                                <li><strong>Hệ thống mua bán phát thải (ETS):</strong> Cơ quan quản lý xác định tổng lượng phát thải được phép và cho phép giao dịch hạn ngạch phát thải.</li>
+                                <li>DN có chi phí giảm thấp sẽ giảm phát thải và <strong>bán hạn ngạch dư thừa</strong>.</li>
+                                <li>DN có chi phí giảm cao có thể <strong>mua hạn ngạch</strong> ➔ Tạo động lực giảm phát thải tại nơi có chi phí thấp hơn.</li>
+                            </ul>
+                        </div>
+                        <div class="sub-box">
+                            <div class="sub-title">3️⃣ 4.4.5. Tín chỉ / Bù trừ </div>
+                            <ul class="node-list">
+                                <li><strong>Bù trừ carbon (Carbon Offsetting):</strong> Là việc sử dụng tín chỉ carbon đủ điều kiện để bù đắp cho một lượng phát thải của chủ thể khác.</li>
+                                <li><strong>Ví dụ:</strong> DN A triển khai dự án thu hồi khí methane tạo ra 5.000 tín chỉ carbon. DN B mua 3.000 tín chỉ từ DN A để bù trừ một phần phát thải của mình.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 4.4.6 Thị trường Carbon & Thực tiễn -->
+                    <div class="wide-row">
+                        <div class="sub-box">
+                            <div class="sub-title">🏛️ 4.4.6. Phân loại & 5 Vai trò của Thị trường Carbon </div>
+                            <ul class="node-list">
+                                <li><strong>Khái niệm:</strong> Thị trường trong đó các đơn vị liên quan đến phát thải/giảm nhẹ KNK (hạn ngạch phát thải & tín chỉ carbon) được phát hành, chuyển giao, mua bán hoặc sử dụng theo quy tắc nhất định.</li>
+                                <li><strong>Thị trường carbon tuân thủ / bắt buộc (Compliance):</strong> Hình thành trên cơ sở quy định pháp luật của cơ quan có thẩm quyền; DN thuộc diện điều chỉnh bắt buộc phải nộp đủ hạn ngạch tương ứng lượng phát thải đã xác minh.</li>
+                                <li><strong>Thị trường carbon tự nguyện (Voluntary – VCM):</strong> Cho phép tổ chức/cá nhân mua bán tín chỉ carbon ngoài nghĩa vụ bắt buộc để phục vụ mục tiêu tự nguyện, hỗ trợ giảm phát thải hoặc thực hiện cam kết khí hậu.</li>
+                                <li><strong>5 Vai trò:</strong> (1) Thực hiện mục tiêu NDC & cam kết Net Zero; (2) Giảm phát thải với chi phí hiệu quả; (3) Hỗ trợ kinh tế carbon thấp; (4) Thúc đẩy chuyển đổi xanh của DN & nền kinh tế; (5) Tạo thêm dòng tài chính giảm phát thải & nâng cao năng lực cạnh tranh.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- NHÁNH 4.5: CÔNG NGHỆ TÀI CHÍNH XANH VÀ BỀN VỮNG (GREEN FINTECH) -->
+                <section class="branch-card theme-purple">
+                    <div class="branch-header">
+                        <h2>📱 4.5. CÔNG NGHỆ TÀI CHÍNH XANH VÀ BỀN VỮNG (GREEN FINTECH)</h2>
+                    </div>
+
+                    <div class="sub-grid-2">
+                        <div class="sub-box">
+                            <div class="sub-title">💡 4.5.1. Khái niệm & 4.5.2. Năm Lợi ích chính </div>
+                            <ul class="node-list">
+                                <li><strong>Khái niệm:</strong> Là một nhánh của Fintech, tập trung ứng dụng công nghệ nhằm <strong>huy động, phân bổ và giám sát dòng vốn</strong> phục vụ các mục tiêu môi trường và phát triển bền vững.</li>
+                                <li><strong>Mô hình tiêu biểu:</strong> <em>Trine (Thụy Điển)</em> – nền tảng kết nối vốn đầu tư với dự án năng lượng mặt trời tại thị trường mới nổi; <em>Aspiration (Hoa Kỳ)</em> – dịch vụ tài chính số gắn với cam kết môi trường.</li>
+                                <li><strong>5 Lợi ích chính:</strong> (1) Giảm chi phí cung cấp dịch vụ tài chính; (2) Mở rộng khả năng tiếp cận nguồn vốn và thị trường vốn; (3) Cải thiện quản trị rủi ro; (4) Nâng cao tính minh bạch và tính toàn vẹn thị trường; (5) Hỗ trợ thay đổi hành vi người tiêu dùng và nhà đầu tư.</li>
+                            </ul>
+                        </div>
+
+                        <div class="sub-box">
+                            <div class="sub-title">🧩 4.5.3. Tám Lĩnh vực ứng dụng tiêu biểu </div>
+                            <ul class="node-list">
+                                <li>1. Thanh toán và tài khoản số xanh.</li>
+                                <li>2. Đầu tư số xanh.</li>
+                                <li>3. Dữ liệu và phân tích ESG số.</li>
+                                <li>4. Nền tảng huy động vốn cộng đồng (Crowdfunding) & kết nối vốn xanh.</li>
+                                <li>5. Phân tích rủi ro số xanh và công nghệ bảo hiểm (InsurTech).</li>
+                                <li>6. Tiền gửi và tín dụng số xanh.</li>
+                                <li>7. Các giải pháp tài sản số xanh (Token hóa tín chỉ/tài sản xanh).</li>
+                                <li>8. Công nghệ quản lý tuân thủ xanh (RegTech).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    
+                </section>
+
+                <!-- NHÁNH 4.6: BẢO HIỂM TÁC ĐỘNG VÀ BẢO HIỂM BỀN VỮNG -->
+                <section class="branch-card theme-rose">
+                    <div class="branch-header">
+                        <h2>🛡️ 4.6. BẢO HIỂM TÁC ĐỘNG VÀ BẢO HIỂM BỀN VỮNG</h2>
+                        
+                    </div>
+
+                    <!-- Vai trò cốt lõi & Bảo hiểm tác động -->
+                    <div class="sub-grid-2">
+                        <div class="sub-box">
+                            <div class="sub-title">⚓ 4.6.1. Vai trò của Bảo hiểm trong bối cảnh khí hậu </div>
+                            <ul class="node-list">
+                                <li><strong>3 Vai trò định chế:</strong> (1) Gánh chịu và chia sẻ rủi ro; (2) Quản lý rủi ro; (3) Đầu tư tổ chức.</li>
+                                <li><strong>2 Vai trò lớn đối với hành vi & xã hội:</strong>
+                                    <br>✔ <em>Quản trị rủi ro:</em> Giúp cá nhân, DN và xã hội chuyển giao một phần rủi ro.
+                                    <br>✔ <em>Khuyến khích hành vi:</em> Thông qua phí bảo hiểm, điều kiện hợp đồng và dịch vụ hỗ trợ để khuyến khích hành vi an toàn và bền vững hơn.
+                                </li>
+                                <li><strong>5 Hỗ trợ trong bối cảnh khí hậu:</strong> Thích ứng với BĐKH; Phục hồi sau thiên tai; Bảo vệ tài sản; Khuyến khích đầu tư xanh; Hỗ trợ công nghệ carbon thấp.</li>
+                            </ul>
+                        </div>
+
+                        <div class="sub-box" style="border-color:#e11d48; background:#fff1f2;">
+                            <div class="sub-title">🎯 Bảo Hiểm Tác Động (Impact Insurance) </div>
+                            <ul class="node-list">
+                                <li><strong>Định nghĩa:</strong> Là việc thiết kế sản phẩm và dịch vụ bảo hiểm nhằm khuyến khích người được bảo hiểm áp dụng hành vi bền vững hơn.</li>
+                                <li><strong>Cơ chế hoạt động:</strong><br>
+                                    <strong>Hành vi xanh hơn ➔ Rủi ro thấp hơn (hoặc tác động môi trường thấp hơn) ➔ Điều kiện bảo hiểm tốt hơn ➔ Khuyến khích tiếp tục hành vi xanh.</strong>
+                                </li>
+                                <li><strong>4 Ví dụ sản phẩm tiêu biểu:</strong> (1) Giảm phí cho xe hybrid/xe điện; (2) Bảo hiểm hỗ trợ sửa chữa công trình theo chuẩn xanh; (3) Bảo hiểm năng lượng tái tạo; (4) Bảo hiểm nông nghiệp thích ứng khí hậu.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Bảo hiểm bền vững & 4 Nguyên tắc PSI -->
+                    <div class="sub-grid-2">
+                        <div class="sub-box">
+                            <div class="sub-title">🌐 Bảo Hiểm Bền Vững & Đặc Điểm </div>
+                            <ul class="node-list">
+                                <li><strong>Định nghĩa (UNEP FI – PSI, 2012):</strong> Là cách tiếp cận trong đó DNBH chủ động tích hợp các yếu tố ESG vào <strong>toàn bộ chuỗi giá trị</strong> của mình (từ khâu nhận bảo hiểm, tính phí, giải quyết bồi thường cho đến hoạt động đầu tư và quản trị nội bộ) nhằm giảm thiểu rủi ro, phát triển giải pháp sáng tạo và nâng cao chất lượng cuộc sống cho cộng đồng.</li>
+                                <li><strong>3 Đặc điểm cốt lõi:</strong>
+                                    <br>1. <em>Phạm vi toàn diện:</em> Tích hợp ESG xuyên suốt toàn bộ hoạt động của DNBH chứ không giới hạn ở một sản phẩm riêng lẻ.
+                                    <br>2. <em>Vận hành dựa trên 4 nguyên tắc PSI</em> của UNEP FI.
+                                    <br>3. <em>Mang tính chiến lược, dài hạn</em> ở cấp độ toàn doanh nghiệp, khác với một sản phẩm bảo hiểm xanh đơn lẻ thiết kế riêng cho một mục đích cụ thể.
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="sub-box">
+                            <div class="sub-title">📜 4 Nguyên Tắc Bảo Hiểm Bền Vững (UN PSI, 2012) </div>
+                            <ul class="node-list">
+                                <li><strong>Nguyên tắc 1:</strong> Tích hợp các vấn đề ESG vào quá trình ra quyết định trong hoạt động bảo hiểm.</li>
+                                <li><strong>Nguyên tắc 2:</strong> Hợp tác với khách hàng và đối tác kinh doanh để nâng cao nhận thức ESG, quản lý rủi ro và phát triển giải pháp.</li>
+                                <li><strong>Nguyên tắc 3:</strong> Hợp tác với Chính phủ, cơ quan quản lý và các bên liên quan để thúc đẩy hành động rộng hơn đối với ESG.</li>
+                                <li><strong>Nguyên tắc 4:</strong> Thể hiện trách nhiệm giải trình và minh bạch thông qua công bố tiến độ thực hiện các nguyên tắc và cách xử lý ESG.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Sản phẩm chính & 5 Thách thức -->
+                    <div class="sub-grid-2">
+                        <div class="sub-box">
+                            <div class="sub-title">📦 4 Nhóm sản phẩm chính </div>
+                            <ul class="node-list">
+                                <li>1. Bảo hiểm nông nghiệp tích hợp ESG.</li>
+                                <li>2. Bảo hiểm công trình năng lượng tái tạo.</li>
+                                <li>3. Bảo hiểm khuyến khích hành vi giảm rủi ro.</li>
+                                <li>4. Bảo hiểm bao trùm (Inclusive insurance cho nhóm yếu thế).</li>
+                            </ul>
+                        </div>
+
+                        <div class="sub-box">
+                            <div class="sub-title">⚠️ 5 Thách thức của Bảo hiểm bền vững </div>
+                            <ul class="node-list">
+                                <li>1. Rủi ro khí hậu ngày càng khó dự báo và định giá; dữ liệu quá khứ có thể không còn phản ánh tương lai.</li>
+                                <li>2. Khả năng chi trả và tiếp cận bảo hiểm có thể suy giảm khi phí tăng hoặc phạm vi bảo hiểm bị thu hẹp.</li>
+                                <li>3. Khó đo lường tác động: cần xác định rõ tác động dự kiến, chỉ tiêu đo lường và quan hệ nhân quả.</li>
+                                <li>4. Chất lượng dữ liệu, quyền riêng tư, bảo mật và thiên lệch mô hình là rủi ro khi ứng dụng công nghệ.</li>
+                                <li>5. Có thể xung đột giữa mục tiêu bền vững và bảo hiểm cho các ngành phát thải cao trong giai đoạn chuyển đổi.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </div>
+<script>
+        let currentZoom = 0.7;
+        const canvas = document.getElementById('mindmap-canvas');
+        const zoomVal = document.getElementById('zoom-val');
+
+        // 1. Áp dụng ngay mức zoom 70% ngay khi vừa tải trang xong
+        canvas.style.transform = `scale(${currentZoom})`;
+        zoomVal.textContent = Math.round(currentZoom * 100) + '%';
+
+        function zoomMap(delta) {
+            currentZoom = Math.min(Math.max(0.4, currentZoom + delta), 1.6);
+            canvas.style.transform = `scale(${currentZoom})`;
+            zoomVal.textContent = Math.round(currentZoom * 100) + '%';
+        }
+
+        function resetZoom() {
+            currentZoom = 0.7; // Đưa về 70% đúng như ý muốn mặc định của bạn
+            canvas.style.transform = `scale(${currentZoom})`;
+            zoomVal.textContent = Math.round(currentZoom * 100) + '%';
+        }
+    </script>
+</body>
+</html>
